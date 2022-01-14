@@ -1,10 +1,23 @@
+import './App.css';  
 
-import './App.css';
+import { useState } from 'react'
 
-function App() {
+import ContactList from './components/ContactList/ContactList'
+
+const DummyData = [{'name': 'Alice', 
+'company': 'Apple', 
+'phone': 39465928364, 
+'email': 'AliceTom@gmail.com', 
+'notes': 'Meeting tomorrow', 
+'contract worth': 2300}]
+
+function App() { 
+
+  const [Data, setData] = useState(DummyData)
+
   return (
     <div className="App">
-      <p>Hello World</p>
+      <ContactList data={Data}/>
     </div>
   );
 }
