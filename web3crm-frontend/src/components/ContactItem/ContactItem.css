@@ -1,0 +1,23 @@
+.Contact{
+    box-shadow: 2px 2px 2px 2px lightgray; 
+    border-radius: 10px; 
+    width: 550px; 
+    margin: 20px 0px;
+}
+
+.ContactItem{ 
+    display: flex; 
+    flex-direction: row;  
+    justify-content: space-between; 
+    
+}   
+
+.ImportContact{
+    margin: 0px 20px;
+}
+
+.ContactItemEl{
+    margin: 0px 20px;
+}
+
+

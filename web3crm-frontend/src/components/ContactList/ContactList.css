@@ -1,0 +1,8 @@
+.Contactlist{ 
+    width: 100%;
+    display: flex;   
+    flex-direction: column-reverse; 
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+}

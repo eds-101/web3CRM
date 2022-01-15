@@ -6,13 +6,15 @@ function AddContact(props) {
           'name': e.target[0].value,
           'company': e.target[1].value,
           'phone': e.target[2].value,
-          'email': e.target[3].value,
+          'email': e.target[3].value, 
           'notes': e.target[4].value,
-          'contract': e.target[5].value
-        }
-
+          'contractWorth': e.target[5].value
+        }  
+        console.log(newContact)
         props.onFetchData(newContact) 
-      }
+      } 
+
+      
 
     return(
         <form onSubmit={handleSubmit}>
