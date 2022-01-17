@@ -3,7 +3,8 @@ import './App.css';
 import { useState } from 'react'
 import ContactList from './components/ContactList/ContactList'
 import AddContact from './components/AddContact/AddContact'; 
-import DummyData from './components/DummyData/CRMData';  
+import DummyData from './components/DummyData/CRMData';   
+import NavBar from './components/NavBar/NavBar'
 
 function App() { 
 
@@ -14,7 +15,8 @@ function App() {
   }
 
   return (
-    <div className="App">    
+    <div className="App">     
+      <NavBar/>
       <AddContact onFetchData={updateContacts}/>
       <ContactList data={Data}/> 
     </div>

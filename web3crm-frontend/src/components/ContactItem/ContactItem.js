@@ -22,7 +22,7 @@ import {TiDelete, TiPencil} from 'react-icons/ti'
             
             <div className="ContactItem">
                 <div className='ImportContact'>
-                    <p>Contract Worth: £{props.contract}</p> 
+                    <p>Contract Worth: {props.contract === 'NaN' ? props.contract : '£' + props.contract }</p> 
                     <p>Notes: {props.notes}</p>  
                 </div>    
                 <div className='NavItem'>

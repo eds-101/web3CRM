@@ -1,0 +1,37 @@
+.NavBar{
+    width: 100%;
+    height: 80px;
+    box-shadow: 2px 2px 2px lightgray; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;  
+    flex-direction: row;
+    margin-bottom: 30px;
+} 
+
+.NavBarListItem{
+    display: inline-flex; 
+    margin-right: 30px;
+} 
+
+.AboutUs{
+    margin: 0px 20px; 
+    border-radius: 20px; 
+    padding: 10px;  
+    background-color: rgb(22, 124, 227); 
+    border: solid 2px rgb(22, 124, 227);
+    color: white;
+}
+
+
+.header{
+    font-size: 22px; 
+    letter-spacing: 2px; 
+    margin-left: 30px; 
+    color: rgb(22, 124, 227); 
+} 
+
+.userIcon{ 
+    margin: 0px 10px;
+    color: rgb(22, 124, 227);  
+}
