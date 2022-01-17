@@ -1,7 +1,5 @@
 import './AddContact.css' 
-
 import React from 'react'
-
 import {useState} from 'react'
 
 function AddContact(props) { 
@@ -21,9 +19,12 @@ function AddContact(props) {
     function getContractWorth(event) {setContractWorth(event.target.value)}
 
 
+    function handleSubmit(e) { 
 
-    function handleSubmit(e) {
-        e.preventDefault() 
+        e.preventDefault()   
+
+        console.log(e)
+
         const newContact = { 'name': e.target[0].value, 'company': e.target[1].value, 'phone': e.target[2].value,
           'email': e.target[3].value, 'notes': e.target[4].value,'contractWorth': e.target[5].value }  
         props.onFetchData(newContact)   
@@ -34,7 +35,7 @@ function AddContact(props) {
         setphoneNumber('') 
         setCompany('')
         setContractWorth('') 
-        
+
       } 
 
       

@@ -9,8 +9,34 @@
     display: flex; 
     flex-direction: row;  
     justify-content: space-between; 
-    
-}   
+}    
+
+.NavItem{
+    display: flex; 
+    justify-content: flex-end;  
+    align-items: flex-end;
+    width: 200px; 
+    margin-right: 10px;
+}
+
+.iconDelete{ 
+    color: rgb(22, 124, 227);  
+    margin: 5px 5px;
+}  
+
+.iconEdit{
+    padding: 2.5px; 
+    color: rgb(22, 124, 227);  
+    margin: 5px 5px;
+}
+
+.iconDelete:hover{
+    color: red;
+} 
+
+.iconEdit:hover{
+    color: RGB(64,136,0);
+}
 
 .ImportContact{
     margin: 0px 20px;
