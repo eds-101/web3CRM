@@ -10,9 +10,7 @@ function App() {
 
   const [Data, setData] = useState(DummyData)
   
-  function updateContacts(contact) {
-    setData(data => [...data, contact])
-  }
+  function updateContacts(contact) {setData(data => [...data, contact])}
 
   return (
     <div className="App">     

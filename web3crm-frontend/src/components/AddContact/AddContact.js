@@ -2,7 +2,12 @@ import './AddContact.css'
 import React from 'react'
 import {useState, useEffect} from 'react'
 
-function AddContact(props) { 
+function AddContact(props) {  
+
+
+    const [submit, setsubmit] = useState(false) 
+
+    console.log(submit)
 
     const [Name, setName] = useState('')  
     const [VaildName, setVaildName] = useState(true)
@@ -27,14 +32,13 @@ function AddContact(props) {
     function getPhoneNumber(event) { setphoneNumber(event.target.value) } 
     function getEmail(event){ setEmail(event.target.value)} 
     function getNotes(event){ setNotes(event.target.value)} 
-    function getContractWorth(event) {setContractWorth(event.target.value)}
-
+    function getContractWorth(event) {setContractWorth(event.target.value)} 
 
     useEffect(() => { setVaildName(Name.length > 1)}, [Name]) 
     useEffect(() => { setVaildCompany(Company.length > 1)}, [Company]) 
     useEffect(() => { setVaildEmail(Email.includes('@'))}, [Email]) 
     useEffect(() => { setVaildphoneNumber(PhoneNumber.length > 8)}, [PhoneNumber]) 
-    useEffect(() => { setVaildContractWorth(ContractWorth > 0.01)}, [ContractWorth]) 
+    useEffect(() => { setVaildContractWorth(ContractWorth >= 0)}, [ContractWorth]) 
 
 
     function checkNewContract(e){ 
@@ -54,7 +58,10 @@ function AddContact(props) {
 
     function handleSubmit(e) { 
 
-        e.preventDefault()    
+        e.preventDefault()     
+
+        if (Name.length === 0) { return }
+
         const CreateContact = checkNewContract(e)
         props.onFetchData(CreateContact)   
 
@@ -76,27 +83,27 @@ function AddContact(props) {
             <div className='formCon'>
 
          <div className='form-item'>
-          <label> Name: </label>   
+          <label> Name: <span>{VaildName || Name.length === 0 ? null : 'Needs one more character'}</span></label>   
           <input type="text" name="name" onChange={getName} value={Name} style={VaildName || Name.length === 0 ? {'background': 'white'} : {'background': 'pink'}}/> 
-          <label> Company: </label> 
+          <label> Company: <span>{VaildCompany || Company.length === 0 ? null : 'Needs more character'}</span></label> 
           <input type="text" name="comapny" onChange={getCompany} value={Company} style={VaildCompany || Company.length === 0 ? {'background': 'white'} : {'background': 'pink'}}/>
          </div>
 
           <div className='form-item'>
-          <label> Phone:</label>  
+          <label> Phone: <span>{VaildPhoneNumber || PhoneNumber.length === 0 ? null : 'Must be a vaild phone number'}</span></label>  
           <input type="text" name="phone" onChange={getPhoneNumber} value={PhoneNumber} style={VaildPhoneNumber || PhoneNumber.length === 0 ? {'background': 'white'} : {'background': 'pink'}}/> 
-          <label> Email: </label>  
+          <label> Email: <span>{VaildEmail || Email.length === 0 ? null : 'Needs @'}</span></label>  
           <input type="text"  name="email" onChange={getEmail} value={Email} style={VaildEmail || Email.length === 0 ? {'background': 'white'} : {'background': 'pink'}}/> 
           </div>
 
           <div className='form-item'>
             <label> Notes: </label> 
             <input type="textarea" name="notes" onChange={getNotes} value={Notes}/>
-            <label> Contract Worth: </label>  
+            <label> Contract Worth: <span>{VaildContractWorth || ContractWorth.length === 0 ? null : 'Postive number'}</span></label>  
             <input type="number" min={0.00}  name="ContractWorth" onChange={getContractWorth} value={ContractWorth} style={VaildContractWorth || ContractWorth.length === 0 ? {'background': 'white'} : {'background': 'pink'}}/> 
           </div> 
           </div> 
-            <input type="submit" value="Submit" className='submit' disabled={!VaildName} style={!VaildName ? {'opacity': '0.5'} : {'opacity': '1'} }/> 
+            <input type="submit" value="Submit" className='submit' onMouseEnter={() => setsubmit(true)} onMouseLeave={() => setsubmit(false)} style={!VaildName ? {'opacity': '0.5'} : {'opacity': '1'} }/><span className='submitError'>{submit && Name.length <= 1? 'To creat a new task you must add a name.' : null}</span> 
         </form> 
       </div>
     )

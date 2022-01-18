@@ -63,4 +63,13 @@
 .submit:hover{
     color: rgb(22, 124, 227); 
     background-color: white;
+} 
+
+span{
+    color: red; 
+    font-size: 12px;
+} 
+
+.submitError{
+    margin-left: 20px;
 }
