@@ -5,7 +5,7 @@ import ContactList from './components/ContactList/ContactList'
 import AddContact from './components/AddContact/AddContact'; 
 import DummyData from './components/DummyData/CRMData';   
 import NavBar from './components/NavBar/NavBar' 
-import ShowFormButton from './components/ShowFormButton/ShowFormButton'
+import ShowFormButton from './components/ShowFormButton/ShowFormButton' 
 
 function App() { 
 
@@ -15,7 +15,7 @@ function App() {
   function showForm(){ Form ? setForm(false) : setForm(true)} 
   
   function updateContacts(contact) { 
-    setData(data => [...data, contact]) 
+    setData(data => [...data, contact])
     setForm(false)
   } 
 
@@ -26,8 +26,9 @@ function App() {
       <NavBar/>   
       { !Form ? <ShowFormButton getShowForm={showForm}/> : null}
       { Form ? <AddContact onFetchData={updateContacts} getShowForm={showForm}/> : null}
-      <ContactList data={Data}/> 
-    </div>
+      <ContactList data={Data}/>  
+
+    </div>  
   );
 }
 
