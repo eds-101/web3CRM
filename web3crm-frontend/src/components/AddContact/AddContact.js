@@ -1,6 +1,7 @@
 import './AddContact.css' 
 import React from 'react'
-import {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react' 
+import {ImCross} from 'react-icons/im'  
 
 function AddContact(props) {  
 
@@ -53,8 +54,12 @@ function AddContact(props) {
       e.target[5].value === '' ? newContact['contractWorth'] = 'NaN' : newContact['contractWorth'] = e.target[5].value
 
       return newContact
-    }
+    } 
 
+    function closeForm(){
+      props.getShowForm()
+    }
+ 
 
     function handleSubmit(e) { 
 
@@ -77,9 +82,12 @@ function AddContact(props) {
       
 
     return( 
-      <div className="formContaner">  
-         <form onSubmit={handleSubmit} className="form">   
-          <p className='formHeader'>Form</p>
+      <div className="formContaner">   
+      <div className='formInnterContaner'>  
+      <div className='closeFormButton' onClick={closeForm}><ImCross/></div>
+         <form onSubmit={handleSubmit} className="form">      
+          <p className='formHeader'>Form</p> 
+
             <div className='formCon'>
 
          <div className='form-item'>
@@ -104,7 +112,8 @@ function AddContact(props) {
           </div> 
           </div> 
             <input type="submit" value="Submit" className='submit' onMouseEnter={() => setsubmit(true)} onMouseLeave={() => setsubmit(false)} style={!VaildName ? {'opacity': '0.5'} : {'opacity': '1'} }/><span className='submitError'>{submit && Name.length <= 1? 'To creat a new task you must add a name.' : null}</span> 
-        </form> 
+        </form>   
+        </div> 
       </div>
     )
 

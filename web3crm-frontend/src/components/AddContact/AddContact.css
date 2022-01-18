@@ -11,11 +11,16 @@
 }
 
 .form{
+    
+}    
+
+.formInnterContaner{
     box-shadow: 2px 2px 2px 2px lightgray;  
     border-radius: 10px;
     padding: 20px; 
-    margin: 20px 20px;
-}   
+    margin: 20px 20px; 
+    position: relative;
+}
 
 .form-item input{
     border: 1px solid rgb(22, 124, 227); 
@@ -63,7 +68,19 @@
 .submit:hover{
     color: rgb(22, 124, 227); 
     background-color: white;
+}  
+
+.closeFormButton{ 
+   position: absolute;  
+   width: 20px;
+   left: 95%;  
+   margin: 10px 0px;
 } 
+
+.closeFormButton:hover{
+    color: rgb(22, 124, 227); 
+    background-color: white;
+}
 
 span{
     color: red; 
