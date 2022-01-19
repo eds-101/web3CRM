@@ -5,7 +5,9 @@ import ContactList from './components/ContactList/ContactList'
 import AddContact from './components/AddContact/AddContact'; 
 import DummyData from './components/DummyData/CRMData';   
 import NavBar from './components/NavBar/NavBar' 
-import ShowFormButton from './components/ShowFormButton/ShowFormButton' 
+import ShowFormButton from './components/ShowFormButton/ShowFormButton'  
+
+import PersonalData from './components/TestingExpress/PersonalData';
 
 function App() { 
 
@@ -17,17 +19,17 @@ function App() {
   function updateContacts(contact) { 
     setData(data => [...data, contact])
     setForm(false)
-  } 
+  }   
 
-
-
+ 
+ 
   return (
     <div className="App">     
       <NavBar/>   
       { !Form ? <ShowFormButton getShowForm={showForm}/> : null}
       { Form ? <AddContact onFetchData={updateContacts} getShowForm={showForm}/> : null}
-      <ContactList data={Data}/>  
-
+      <ContactList data={Data}/>    
+      <PersonalData/>
     </div>  
   );
 }
