@@ -5,7 +5,6 @@ import {ImCross} from 'react-icons/im'
 
 function AddContact(props) {  
 
-
     const [submit, setsubmit] = useState(false) 
 
     console.log(submit)
@@ -53,7 +52,8 @@ function AddContact(props) {
       e.target[4].value === '' ? newContact['notes'] = 'NaN' : newContact['notes'] = e.target[4].value
       e.target[5].value === '' ? newContact['contractWorth'] = 'NaN' : newContact['contractWorth'] = e.target[5].value
 
-      return newContact
+      return newContact 
+      
     } 
 
     function closeForm(){
@@ -67,7 +67,8 @@ function AddContact(props) {
 
         if (Name.length === 0) { return }
 
-        const CreateContact = checkNewContract(e)
+        const CreateContact = checkNewContract(e) 
+
         props.onFetchData(CreateContact)   
 
         setName('')  
