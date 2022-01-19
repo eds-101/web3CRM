@@ -1,9 +1,13 @@
+const { response } = require('express')
 const express = require('express')
 const app = express() 
-const port = 3000
+const port = 3000 
 
-app.get('/data', function (req, res) { 
-    let newObject = [{'id': '1', 'message': 'Hello World'}, {'id': '2', 'message': 'Weather in progress'}] 
+const DummyData = require('./constructor/DummyData') 
+// not grabbing the data
+
+app.get('/data', async function (req, res) { 
+    let newObject = await DummyData   
   res.send(newObject)
 })
 

@@ -6,11 +6,19 @@ import axios from "axios";
 export default function GetData(props) {
     const [data, setdata] = useState(null) 
 
-    useEffect(() => {
-        axios.get("/data").then((response) =>{
-            setdata(response.data)
-        })
-    }, [])  
+    useEffect(() => { 
+    async function GrabData() {
+        // axios.get("/data").then((response) =>{
+        //     setdata(response.data)
+        // })  
+       let PersonalData = await axios.get("/data")  
+       console.log(PersonalData)
+       setdata(PersonalData)
+    }    
+    GrabData()
+    }, [])     
+
+    
 
     props.getDataFromExpress(data)  
 
