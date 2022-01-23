@@ -1,13 +1,13 @@
 import './AddContact.css' 
 import React from 'react'
 import {useState, useEffect} from 'react' 
-import {ImCross} from 'react-icons/im'  
+import {ImCross} from 'react-icons/im'   
+
+let score = 4
 
 function AddContact(props) {  
 
-    const [submit, setsubmit] = useState(false) 
-
-    console.log(submit)
+    const [submit, setsubmit] = useState(false)    
 
     const [Name, setName] = useState('')  
     const [VaildName, setVaildName] = useState(true)
@@ -40,17 +40,21 @@ function AddContact(props) {
     useEffect(() => { setVaildphoneNumber(PhoneNumber.length > 8)}, [PhoneNumber]) 
     useEffect(() => { setVaildContractWorth(ContractWorth >= 0)}, [ContractWorth]) 
 
-
     function checkNewContract(e){ 
 
       let newContact = {}
-
+      
+      newContact['id'] = score
       e.target[0].value === '' ?  newContact['name'] = 'NaN' : newContact['name'] = e.target[0].value
       e.target[1].value === '' ? newContact['company'] = 'NaN' : newContact['company'] = e.target[1].value 
       e.target[2].value === '' ? newContact['phone'] = 'NaN' : newContact['phone'] = e.target[2].value
       e.target[3].value === '' ? newContact['email'] = 'NaN' : newContact['email'] = e.target[3].value
       e.target[4].value === '' ? newContact['notes'] = 'NaN' : newContact['notes'] = e.target[4].value
       e.target[5].value === '' ? newContact['contractWorth'] = 'NaN' : newContact['contractWorth'] = e.target[5].value
+      
+      score += 1 
+
+      console.log(newContact)
 
       return newContact 
       

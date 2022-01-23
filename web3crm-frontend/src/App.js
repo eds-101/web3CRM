@@ -1,36 +1,47 @@
 
 import './App.css';  
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ContactList from './components/ContactList/ContactList'
 import AddContact from './components/AddContact/AddContact'; 
-import DummyData from './components/DummyData/CRMData';   
+import DummyData from './components/DummyData/CRMData';     
+// import NewPersonalData from './components/ExpressDataCompanent/PersonalData';
 import NavBar from './components/NavBar/NavBar' 
-import ShowFormButton from './components/ShowFormButton/ShowFormButton'  
-import GetData from './components/TestingExpress/PersonalData'
+import ShowFormButton from './components/ShowFormButton/ShowFormButton'   
+import NoContactsMessage from './components/NoContactsMessage/NoContactsMessage'; 
+import ContactMessageCalled from './components/ContactMessageCalled/ContactMessageCalled'
 
-function App() {   
+function App() {     
 
-  const [Data, setData] = useState(DummyData) 
-  const [Form, setForm] = useState(false)  
+  const [Data, setData] = useState(DummyData)     
 
-  function showForm(){ Form ? setForm(false) : setForm(true)} 
+  const [Form, setForm] = useState(false)    
+
+  const [message, setMessage] = useState(false)
+
+  function showForm(){ Form ? setForm(false) : setForm(true)}  
   
+  // This shows the contact being added to the list message
   function updateContacts(contact) { 
     setData(data => [...data, contact])
-    setForm(false)
-  }    
+    setForm(false) 
+    ContactHasBeenAdd() 
+    setTimeout(endContactHasBeenAdd, 3000)
+  }      
+  async function ContactHasBeenAdd() {setMessage(true)} 
+  async function endContactHasBeenAdd() {setMessage(false)}
 
-  function getDataExpress(event){
-    console.log(event)
-  }
- 
+  // This funaction delets the message. 
+  function UpdataDataList(event) { setData(data => data.filter((item) => item['id'] !== event))} 
+
+
   return (
     <div className="App">     
-      <GetData getDataFromExpress={getDataExpress}/> 
-      <NavBar/>   
+      <NavBar/>    
+      {message ? <ContactMessageCalled/> : null}
       { !Form ? <ShowFormButton getShowForm={showForm}/> : null}
       { Form ? <AddContact onFetchData={updateContacts} getShowForm={showForm}/> : null}
-      <ContactList data={Data}/>   
+      <ContactList data={Data} onGetIdFromList={UpdataDataList}/>      
+      { Data.length === 0 ? <NoContactsMessage/> : null}
     </div>  
   );
 }

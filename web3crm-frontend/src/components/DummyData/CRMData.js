@@ -1,18 +1,24 @@
 
 
-const DummyData = [{'name': 'Alice', 
+const DummyData = [{  
+'id': 1,
+'name': 'Alice', 
 'company': 'Apple', 
 'phone': 39465928364, 
 'email': 'Alice@gmail.com', 
 'notes': 'Meeting tomorrow', 
 'contractWorth': 2300}, 
-{'name': 'Tom', 
+{
+'id': 2,
+'name': 'Tom', 
 'company': 'IBM', 
 'phone': 35908740237, 
 'email': 'Tom@gmail.com', 
 'notes': 'A new client to talk too', 
 'contractWorth': 1100}, 
-{'name': 'Sam', 
+{  
+'id': 3,
+'name': 'Sam', 
 'company': 'Hello World', 
 'phone': 102437589, 
 'email': 'Sam@gmail.com', 

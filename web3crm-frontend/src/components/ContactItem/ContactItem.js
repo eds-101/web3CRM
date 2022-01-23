@@ -4,9 +4,13 @@ import {TiDelete, TiPencil} from 'react-icons/ti'
 
 //https://react-icons.github.io/react-icons/icons?name=ti
 
-// import {TiPencil} from 'react-icons/ti'
+// import {TiPencil} from 'react-icons/ti' 
 
-    function ContactItem(props){ 
+    function ContactItem(props){  
+
+
+        function getIdFromContract(event){ props.onIdFromItem(event)}
+
         return( 
             <div className='Contact'>
             <div className="ContactItem"> 
@@ -26,7 +30,7 @@ import {TiDelete, TiPencil} from 'react-icons/ti'
                     <p>Notes: {props.notes}</p>  
                 </div>    
                 <div className='NavItem'>
-                    <TiDelete className='iconDelete' size={35}/> 
+                    <TiDelete className='iconDelete' onClick={() => getIdFromContract(props.id)} size={35}/> 
                     <TiPencil className='iconEdit' size={30}/>
                 </div>
             </div>
