@@ -1,10 +1,9 @@
 
 import './App.css';  
 import { useEffect, useState } from 'react'
+import axios from "axios";
 import ContactList from './components/ContactList/ContactList'
 import AddContact from './components/AddContact/AddContact'; 
-import DummyData from './components/DummyData/CRMData';     
-// import NewPersonalData from './components/ExpressDataCompanent/PersonalData';
 import NavBar from './components/NavBar/NavBar' 
 import ShowFormButton from './components/ShowFormButton/ShowFormButton'   
 import NoContactsMessage from './components/NoContactsMessage/NoContactsMessage'; 
@@ -12,17 +11,27 @@ import ContactMessageCalled from './components/ContactMessageCalled/ContactMessa
 
 function App() {     
 
-  const [Data, setData] = useState(DummyData)     
+  const [Data, setData] = useState([])     
 
   const [Form, setForm] = useState(false)    
+  const [message, setMessage] = useState(false)   
 
-  const [message, setMessage] = useState(false)
+  useEffect(() => { 
+    axios.get("/data").then((response) => {
+      setData(response.data) 
+      })
+  }, [])  
 
-  function showForm(){ Form ? setForm(false) : setForm(true)}  
-  
+
+  function showForm(){ Form ? setForm(false) : setForm(true)}     
+
+  // where the new data from the back-end is being called
+  // console.log(NewPersonalData())
+
+
   // This shows the contact being added to the list message
   function updateContacts(contact) { 
-    setData(data => [...data, contact])
+    setData(data => [...data, contact]) 
     setForm(false) 
     ContactHasBeenAdd() 
     setTimeout(endContactHasBeenAdd, 3000)
